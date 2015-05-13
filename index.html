@@ -81,6 +81,77 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/05/09/CSS之基础布局/" title="CSS之基础布局" itemprop="url">CSS之基础布局</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wang Jian" target="_blank" itemprop="author">Wang Jian</a>
+		
+  <p class="article-time">
+    <time datetime="2015-05-09T05:31:24.000Z" itemprop="datePublished"> 发表于 2015-05-09</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>网页设计中基本的定位方法有标准文档流，浮动定位和绝对定位，浮动定位通过float属性实现，绝对定位通过position属性实现。这三种是最基本的定位方法，网页上的各种布局其实都可由这三种定位组合得到，以下为网页设计中的常见布局。</p>
+<h2 id="自动居中一列布局">自动居中一列布局</h2><p>普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。<br>一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。<br>考虑如下DOM结构，<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"wrap"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1、使用margin属性">1、使用margin属性</h3><p>通过给包裹层设置margin使其左右外边距相同实现自动居中。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法优点是代码量非常少，兼容性好，缺点是对浮动和绝对定位元素无效，考虑到网页中浮动元素是比较常见的，所以针对包裹层需要注意清除浮动时使用<code>overflow:hidden</code>。</p>
+<h3 id="2、组合使用position和margin属性">2、组合使用position和margin属性</h3><p>通过绝对定位使包裹层向右偏移50%，再设置负外边距为宽度的一半，实现自动居中。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">positon</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">480px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法缺点是代码量多了两行，而且也用到了<code>margin</code>属性，优点是子元素可以浮动或绝对定位。</p>
+<h2 id="横向两列布局">横向两列布局</h2><p>横向两列布局考虑的场景是常见的很多网站页面主体部分有侧边栏，最典型的是博客，其他如知乎、什么值得买、segmentfault、拉勾网等，都是典型的两列布局的网站，侧边栏不是在左边就是在右边，两列之间保持一定的间距。<br>考虑如下DOM结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span>header<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"wrap"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"aside"</span>&gt;</span>aside<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"main"</span>&gt;</span>main<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"footer"</span>&gt;</span>footer<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1、浮动">1、浮动</h3><p>对<code>&lt;div id=&quot;aside&quot;&gt;</code>设置<code>float:right</code>，则这个块浮动到右侧，主体块受浮动影响移动到原先侧边块所在位置。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#aside</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> right</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>浮动对紧邻元素的影响正是实现布局的目的，是非常巧妙的布局方法。<br>但是上述代码仍需完善，因为侧边块浮动后脱离了标准文档流，如果侧边块里的内容比主体块高，则会出现侧边块内容溢出的现象，这是浮动元素对包含块的影响，需要给包裹层清除浮动。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2、绝对定位">2、绝对定位</h3><p>通过绝对定位实现横向两列布局的目的是实现其中一列宽度自适应。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#main</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>设置<code>position:absolute</code>会导致主体块脱落标准文档流，副作用就是如果主体块比侧边块的高度高，会出现主体块内容溢出，覆盖在文档流后面的块上，这种情况显然是要避免的，所以需要注意侧边块的高度高于主体块，这是为了实现宽度自适应的一点小代价。<br>注意给绝对定位元素的父元素设置相对定位。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2><p>回顾一下网页布局的作用是什么呢，我们知道网页上的内容是一块一块分区域的，那么布局的目的自然是让这些块在合适的位置出现而且不干扰其他块内容的显示，让整个网页充满内容。<br>一列和两列布局是网页设计中最常用的布局，掌握这两种布局可以解决大部分网页布局问题，但是既然是基本的布局，自然也有相对复杂的布局，这个另开一篇再做介绍。<br>布局完成以后，接下来往这些块里添内容加样式，一个网页设计就完成了。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/布局/">布局</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/05/04/当我跑步的时候我在想什么/" title="当我跑步的时候我在想什么" itemprop="url">当我跑步的时候我在想什么</a>
   </h1>
   <p class="article-author">By
@@ -169,7 +240,7 @@
 <h2 id="第三步：本地安装Hexo博客框架">第三步：本地安装Hexo博客框架</h2><h3 id="1、过去的方法">1、过去的方法</h3><p>首先，在本地新建一个文件夹存放博客，我是在E盘新建Blog文件夹，选中文件夹，右键Git Bash Here，显示是所有操作直接在Blog文件夹内进行。<br>输入<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-npm%20hexo.jpg" alt="此处输入图片的描述"><br>下载好Hexo框架后再输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> init</span><br></pre></td></tr></table></figure></p>
 <p>这样博客框架就会复制到Blog文件夹下，打开Blog文件夹就可以看到一堆文件，这些就是Hexo框架的所需文件。<br>最后一步，配置博客到GitHub。<br>这里需要用到两条命令。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2、出现的问题">2、出现的问题</h3><p>年初的时候这两条命令一点问题没有，可是现在，问题有两个：<br>1.执行<code>hexo g</code>会提示<code>ERROR T入 running: &#39;npm install hexo --save&#39;</code>，执行这条命令就没事了。<br>2.执行<code>hexo d</code>是没有效果的，既不配置文件也不提示错误，一点反应也没有，GitHub上也没有文件，一直为空，博客自然也打不开。<br>这一整天，就花在为什么执行<code>hexo d</code>没效果这个问题上了。<br>于是重头开始做，删掉本地所有文件，删掉SSH Key，删掉Repository，还是不行，重启再来。<br>冷静下来找原因，第一步第二步都没问题，那么问题肯定是在第三步上。第三步哪里有问题呢，是本地没配置好还是本地配置好了但是没上传。于是开始尝试。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">s</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2、出现的问题">2、出现的问题</h3><p>年初的时候这两条命令一点问题没有，可是现在，问题有两个：<br>1.执行<code>hexo g</code>会提示<code>ERROR Try running: &#39;npm install hexo --save&#39;</code>，执行这条命令就没事了。<br>2.执行<code>hexo d</code>是没有效果的，既不配置文件也不提示错误，一点反应也没有，GitHub上也没有文件，一直为空，博客自然也打不开。<br>这一整天，就花在为什么执行<code>hexo d</code>没效果这个问题上了。<br>于是重头开始做，删掉本地所有文件，删掉SSH Key，删掉Repository，还是不行，重启再来。<br>冷静下来找原因，第一步第二步都没问题，那么问题肯定是在第三步上。第三步哪里有问题呢，是本地没配置好还是本地配置好了但是没上传。于是开始尝试。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">s</span></span><br></pre></td></tr></table></figure></p>
 <p>提示<code>running at http://0.0.0.0:4000/</code>，浏览器打开这个地址竟然无法访问，本地没配置好？尝试输入<code>http://localhost:4000/</code>，以前就是访问这个地址，可以访问，是landspace主题，这时开始察觉到可能是Hexo版本的问题，网上的确有看到Hexo 3.0不兼容一些主题的文章。既然本地没问题，那么问题就在本地没上传，<code>hexo d</code>命令无效。<br>又重新操作了一遍，看到命令行里有<code>hexo@3.0.1</code>的信息。看来问题出在<code>hexo d</code>这条命令上。<br>终于在网上找到一篇Hexo 3.0遇到的问题，找到<code>hexo d</code>无响应的问题，需要在全局配置文件<code>_config.yml</code>里配置deploy值。配置如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="string">type:</span> git</span><br><span class="line"><span class="string">repository:</span> <span class="string">https:</span><span class="comment">//github.com/wangjianhaha/wangjianhaha.github.io.git</span></span><br><span class="line"><span class="string">branch:</span> master</span><br></pre></td></tr></table></figure></p>
 <p>开始我配置的是SSH，不成功，后来配置https才成功。这个https的地址在GitHub代码库上有，代码库空的时候显示在代码库最上面，代码库内容上传后显示在右下角。配置好后发现还是有问题，如下：<br><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-deploy%20not%20found%20git.jpg" alt="此处输入图片的描述"><br>提示<code>ERROR Deployer not found： git</code>，不是很明白什么意思，下面是瞎蒙的。<br>Hexo 3.0以后deploy git是被分开的，所以需要安装，安装命令如下<code>npm install hexo-deployer-git --save</code>。<br>完事执行<code>hexo d</code>还是有问题，如下：<br><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-remote%20hung%20up.jpg" alt="此处输入图片的描述"><br>看不明白就去查RPC什么意思，一查一大堆，也看不明白，无奈重新执行<code>hexo d</code>，竟然完成了，<code>Deploy done</code>。<br><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-deploy%20sucess.jpg" alt="此处输入图片的描述"><br>打开<code>wangjianhaha.github.io</code>，正常，代码库里也有文件了，这感觉，简直爽爆了。<br>好，重新回顾下正常配置本地框架的流程。</p>
 <h3 id="3、现在的方法">3、现在的方法</h3><p>新建存放博客的文件夹，选中，右键选择Git Bash Here，输入：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
@@ -299,6 +370,10 @@
 		<ul>
 		
 		  
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/随笔/" title="随笔">随笔<sup>3</sup></a></li>
 		  
 		
@@ -312,7 +387,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/自留地/" title="自留地">自留地<sup>1</sup></a></li>
+				<li><a href="/tags/布局/" title="布局">布局<sup>1</sup></a></li>
 			
 		
 			
@@ -321,6 +396,10 @@
 		
 			
 				<li><a href="/tags/跑步/" title="跑步">跑步<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自留地/" title="自留地">自留地<sup>1</sup></a></li>
 			
 		
 		</ul>

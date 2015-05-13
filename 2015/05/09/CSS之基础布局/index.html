@@ -1,0 +1,434 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS之基础布局 | 王健的自留地</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Wang Jian">
+    
+
+    
+    <meta name="description" content="网页设计中基本的定位方法有标准文档流，浮动定位和绝对定位，浮动定位通过float属性实现，绝对定位通过position属性实现。这三种是最基本的定位方法，网页上的各种布局其实都可由这三种定位组合得到，以下为网页设计中的常见布局。
+自动居中一列布局普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS之基础布局">
+<meta property="og:url" content="http://yoursite.com/2015/05/09/CSS之基础布局/index.html">
+<meta property="og:site_name" content="王健的自留地">
+<meta property="og:description" content="网页设计中基本的定位方法有标准文档流，浮动定位和绝对定位，浮动定位通过float属性实现，绝对定位通过position属性实现。这三种是最基本的定位方法，网页上的各种布局其实都可由这三种定位组合得到，以下为网页设计中的常见布局。
+自动居中一列布局普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS之基础布局">
+<meta name="twitter:description" content="网页设计中基本的定位方法有标准文档流，浮动定位和绝对定位，浮动定位通过float属性实现，绝对定位通过position属性实现。这三种是最基本的定位方法，网页上的各种布局其实都可由这三种定位组合得到，以下为网页设计中的常见布局。
+自动居中一列布局普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="王健的自留地" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="王健的自留地" title="王健的自留地"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="王健的自留地">王健的自留地</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">作者</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/05/09/CSS之基础布局/" title="CSS之基础布局" itemprop="url">CSS之基础布局</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Wang Jian" target="_blank" itemprop="author">Wang Jian</a>
+		
+  <p class="article-time">
+    <time datetime="2015-05-09T05:31:24.000Z" itemprop="datePublished"> 发表于 2015-05-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动居中一列布局"><span class="toc-number">1.</span> <span class="toc-text">自动居中一列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、使用margin属性"><span class="toc-number">1.1.</span> <span class="toc-text">1、使用margin属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、组合使用position和margin属性"><span class="toc-number">1.2.</span> <span class="toc-text">2、组合使用position和margin属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#横向两列布局"><span class="toc-number">2.</span> <span class="toc-text">横向两列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、浮动"><span class="toc-number">2.1.</span> <span class="toc-text">1、浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、绝对定位"><span class="toc-number">2.2.</span> <span class="toc-text">2、绝对定位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+		
+		</div>
+		
+		<p>网页设计中基本的定位方法有标准文档流，浮动定位和绝对定位，浮动定位通过float属性实现，绝对定位通过position属性实现。这三种是最基本的定位方法，网页上的各种布局其实都可由这三种定位组合得到，以下为网页设计中的常见布局。</p>
+<h2 id="自动居中一列布局">自动居中一列布局</h2><p>普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。<br>一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。<br>考虑如下DOM结构，<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"wrap"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1、使用margin属性">1、使用margin属性</h3><p>通过给包裹层设置margin使其左右外边距相同实现自动居中。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法优点是代码量非常少，兼容性好，缺点是对浮动和绝对定位元素无效，考虑到网页中浮动元素是比较常见的，所以针对包裹层需要注意清除浮动时使用<code>overflow:hidden</code>。</p>
+<h3 id="2、组合使用position和margin属性">2、组合使用position和margin属性</h3><p>通过绝对定位使包裹层向右偏移50%，再设置负外边距为宽度的一半，实现自动居中。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">positon</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">480px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法缺点是代码量多了两行，而且也用到了<code>margin</code>属性，优点是子元素可以浮动或绝对定位。</p>
+<h2 id="横向两列布局">横向两列布局</h2><p>横向两列布局考虑的场景是常见的很多网站页面主体部分有侧边栏，最典型的是博客，其他如知乎、什么值得买、segmentfault、拉勾网等，都是典型的两列布局的网站，侧边栏不是在左边就是在右边，两列之间保持一定的间距。<br>考虑如下DOM结构：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span>header<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"wrap"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"aside"</span>&gt;</span>aside<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"main"</span>&gt;</span>main<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"footer"</span>&gt;</span>footer<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1、浮动">1、浮动</h3><p>对<code>&lt;div id=&quot;aside&quot;&gt;</code>设置<code>float:right</code>，则这个块浮动到右侧，主体块受浮动影响移动到原先侧边块所在位置。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#aside</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">float</span>:<span class="value"> right</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>浮动对紧邻元素的影响正是实现布局的目的，是非常巧妙的布局方法。<br>但是上述代码仍需完善，因为侧边块浮动后脱离了标准文档流，如果侧边块里的内容比主体块高，则会出现侧边块内容溢出的现象，这是浮动元素对包含块的影响，需要给包裹层清除浮动。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2、绝对定位">2、绝对定位</h3><p>通过绝对定位实现横向两列布局的目的是实现其中一列宽度自适应。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#main</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>设置<code>position:absolute</code>会导致主体块脱落标准文档流，副作用就是如果主体块比侧边块的高度高，会出现主体块内容溢出，覆盖在文档流后面的块上，这种情况显然是要避免的，所以需要注意侧边块的高度高于主体块，这是为了实现宽度自适应的一点小代价。<br>注意给绝对定位元素的父元素设置相对定位。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2><p>回顾一下网页布局的作用是什么呢，我们知道网页上的内容是一块一块分区域的，那么布局的目的自然是让这些块在合适的位置出现而且不干扰其他块内容的显示，让整个网页充满内容。<br>一列和两列布局是网页设计中最常用的布局，掌握这两种布局可以解决大部分网页布局问题，但是既然是基本的布局，自然也有相对复杂的布局，这个另开一篇再做介绍。<br>布局完成以后，接下来往这些块里添内容加样式，一个网页设计就完成了。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/CSS/">CSS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/布局/">布局</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/05/09/CSS之基础布局/" data-title="CSS之基础布局 | 王健的自留地" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/05/04/当我跑步的时候我在想什么/"  title="当我跑步的时候我在想什么">
+ <strong>下一篇：</strong><br/> 
+ <span>当我跑步的时候我在想什么
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动居中一列布局"><span class="toc-number">1.</span> <span class="toc-text">自动居中一列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、使用margin属性"><span class="toc-number">1.1.</span> <span class="toc-text">1、使用margin属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、组合使用position和margin属性"><span class="toc-number">1.2.</span> <span class="toc-text">2、组合使用position和margin属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#横向两列布局"><span class="toc-number">2.</span> <span class="toc-text">横向两列布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、浮动"><span class="toc-number">2.1.</span> <span class="toc-text">1、浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、绝对定位"><span class="toc-number">2.2.</span> <span class="toc-text">2、绝对定位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/随笔/" title="随笔">随笔<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/布局/" title="布局">布局<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Github-Hexo/" title="Github Hexo">Github Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/跑步/" title="跑步">跑步<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自留地/" title="自留地">自留地<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 平时在耕田 <br/>
+			没事写写字</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="Wang Jian">Wang Jian</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

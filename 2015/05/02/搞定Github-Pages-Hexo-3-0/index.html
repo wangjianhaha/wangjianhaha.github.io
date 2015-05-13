@@ -126,7 +126,7 @@
 <h2 id="第三步：本地安装Hexo博客框架">第三步：本地安装Hexo博客框架</h2><h3 id="1、过去的方法">1、过去的方法</h3><p>首先，在本地新建一个文件夹存放博客，我是在E盘新建Blog文件夹，选中文件夹，右键Git Bash Here，显示是所有操作直接在Blog文件夹内进行。<br>输入<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-npm%20hexo.jpg" alt="此处输入图片的描述"><br>下载好Hexo框架后再输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> init</span><br></pre></td></tr></table></figure></p>
 <p>这样博客框架就会复制到Blog文件夹下，打开Blog文件夹就可以看到一堆文件，这些就是Hexo框架的所需文件。<br>最后一步，配置博客到GitHub。<br>这里需要用到两条命令。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">d</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2、出现的问题">2、出现的问题</h3><p>年初的时候这两条命令一点问题没有，可是现在，问题有两个：<br>1.执行<code>hexo g</code>会提示<code>ERROR T入 running: &#39;npm install hexo --save&#39;</code>，执行这条命令就没事了。<br>2.执行<code>hexo d</code>是没有效果的，既不配置文件也不提示错误，一点反应也没有，GitHub上也没有文件，一直为空，博客自然也打不开。<br>这一整天，就花在为什么执行<code>hexo d</code>没效果这个问题上了。<br>于是重头开始做，删掉本地所有文件，删掉SSH Key，删掉Repository，还是不行，重启再来。<br>冷静下来找原因，第一步第二步都没问题，那么问题肯定是在第三步上。第三步哪里有问题呢，是本地没配置好还是本地配置好了但是没上传。于是开始尝试。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">s</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2、出现的问题">2、出现的问题</h3><p>年初的时候这两条命令一点问题没有，可是现在，问题有两个：<br>1.执行<code>hexo g</code>会提示<code>ERROR Try running: &#39;npm install hexo --save&#39;</code>，执行这条命令就没事了。<br>2.执行<code>hexo d</code>是没有效果的，既不配置文件也不提示错误，一点反应也没有，GitHub上也没有文件，一直为空，博客自然也打不开。<br>这一整天，就花在为什么执行<code>hexo d</code>没效果这个问题上了。<br>于是重头开始做，删掉本地所有文件，删掉SSH Key，删掉Repository，还是不行，重启再来。<br>冷静下来找原因，第一步第二步都没问题，那么问题肯定是在第三步上。第三步哪里有问题呢，是本地没配置好还是本地配置好了但是没上传。于是开始尝试。<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">g</span></span><br><span class="line">hexo <span class="literal">s</span></span><br></pre></td></tr></table></figure></p>
 <p>提示<code>running at http://0.0.0.0:4000/</code>，浏览器打开这个地址竟然无法访问，本地没配置好？尝试输入<code>http://localhost:4000/</code>，以前就是访问这个地址，可以访问，是landspace主题，这时开始察觉到可能是Hexo版本的问题，网上的确有看到Hexo 3.0不兼容一些主题的文章。既然本地没问题，那么问题就在本地没上传，<code>hexo d</code>命令无效。<br>又重新操作了一遍，看到命令行里有<code>hexo@3.0.1</code>的信息。看来问题出在<code>hexo d</code>这条命令上。<br>终于在网上找到一篇Hexo 3.0遇到的问题，找到<code>hexo d</code>无响应的问题，需要在全局配置文件<code>_config.yml</code>里配置deploy值。配置如下：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">deploy:</span></span><br><span class="line"><span class="string">type:</span> git</span><br><span class="line"><span class="string">repository:</span> <span class="string">https:</span><span class="comment">//github.com/wangjianhaha/wangjianhaha.github.io.git</span></span><br><span class="line"><span class="string">branch:</span> master</span><br></pre></td></tr></table></figure></p>
 <p>开始我配置的是SSH，不成功，后来配置https才成功。这个https的地址在GitHub代码库上有，代码库空的时候显示在代码库最上面，代码库内容上传后显示在右下角。配置好后发现还是有问题，如下：<br><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-deploy%20not%20found%20git.jpg" alt="此处输入图片的描述"><br>提示<code>ERROR Deployer not found： git</code>，不是很明白什么意思，下面是瞎蒙的。<br>Hexo 3.0以后deploy git是被分开的，所以需要安装，安装命令如下<code>npm install hexo-deployer-git --save</code>。<br>完事执行<code>hexo d</code>还是有问题，如下：<br><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-remote%20hung%20up.jpg" alt="此处输入图片的描述"><br>看不明白就去查RPC什么意思，一查一大堆，也看不明白，无奈重新执行<code>hexo d</code>，竟然完成了，<code>Deploy done</code>。<br><img src="http://7vii5v.com1.z0.glb.clouddn.com/20150502-deploy%20sucess.jpg" alt="此处输入图片的描述"><br>打开<code>wangjianhaha.github.io</code>，正常，代码库里也有文件了，这感觉，简直爽爆了。<br>好，重新回顾下正常配置本地框架的流程。</p>
 <h3 id="3、现在的方法">3、现在的方法</h3><p>新建存放博客的文件夹，选中，右键选择Git Bash Here，输入：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> -g hexo</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure></p>
@@ -210,6 +210,10 @@
 		<ul>
 		
 		  
+			<li><a href="/categories/CSS/" title="CSS">CSS<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/随笔/" title="随笔">随笔<sup>3</sup></a></li>
 		  
 		
@@ -223,7 +227,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/自留地/" title="自留地">自留地<sup>1</sup></a></li>
+				<li><a href="/tags/布局/" title="布局">布局<sup>1</sup></a></li>
 			
 		
 			
@@ -232,6 +236,10 @@
 		
 			
 				<li><a href="/tags/跑步/" title="跑步">跑步<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/自留地/" title="自留地">自留地<sup>1</sup></a></li>
 			
 		
 		</ul>
