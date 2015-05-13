@@ -15,7 +15,7 @@
 自动居中一列布局普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS之基础布局">
-<meta property="og:url" content="http://yoursite.com/2015/05/09/CSS之基础布局/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/05/13/CSS之基础布局/index.html">
 <meta property="og:site_name" content="王健的自留地">
 <meta property="og:description" content="网页设计中基本的定位方法有标准文档流，浮动定位和绝对定位，浮动定位通过float属性实现，绝对定位通过position属性实现。这三种是最基本的定位方法，网页上的各种布局其实都可由这三种定位组合得到，以下为网页设计中的常见布局。
 自动居中一列布局普通文档流如果不居中，视觉上不是很和谐，所以一列布局在窗口通常是居中显示的。一列布局通常定宽，宽度确定的情况下实现居中的方法比较多，这里举例两种常用方法。">
@@ -82,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/05/09/CSS之基础布局/" title="CSS之基础布局" itemprop="url">CSS之基础布局</a>
+      <a href="/2015/05/13/CSS之基础布局/" title="CSS之基础布局" itemprop="url">CSS之基础布局</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Wang Jian" target="_blank" itemprop="author">Wang Jian</a>
 		
   <p class="article-time">
-    <time datetime="2015-05-09T05:31:24.000Z" itemprop="datePublished"> 发表于 2015-05-09</time>
+    <time datetime="2015-05-13T05:31:24.000Z" itemprop="datePublished"> 发表于 2015-05-13</time>
     
   </p>
 </header>
@@ -113,7 +113,7 @@
 <p>浮动对紧邻元素的影响正是实现布局的目的，是非常巧妙的布局方法。<br>但是上述代码仍需完善，因为侧边块浮动后脱离了标准文档流，如果侧边块里的内容比主体块高，则会出现侧边块内容溢出的现象，这是浮动元素对包含块的影响，需要给包裹层清除浮动。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">960px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="2、绝对定位">2、绝对定位</h3><p>通过绝对定位实现横向两列布局的目的是实现其中一列宽度自适应。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#main</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>设置<code>position:absolute</code>会导致主体块脱落标准文档流，副作用就是如果主体块比侧边块的高度高，会出现主体块内容溢出，覆盖在文档流后面的块上，这种情况显然是要避免的，所以需要注意侧边块的高度高于主体块，这是为了实现宽度自适应的一点小代价。<br>注意给绝对定位元素的父元素设置相对定位。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#wrap</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="总结">总结</h2><p>回顾一下网页布局的作用是什么呢，我们知道网页上的内容是一块一块分区域的，那么布局的目的自然是让这些块在合适的位置出现而且不干扰其他块内容的显示，让整个网页充满内容。<br>一列和两列布局是网页设计中最常用的布局，掌握这两种布局可以解决大部分网页布局问题，但是既然是基本的布局，自然也有相对复杂的布局，这个另开一篇再做介绍。<br>布局完成以后，接下来往这些块里添内容加样式，一个网页设计就完成了。</p>
+<h2 id="总结">总结</h2><p>回顾一下网页布局的作用是什么呢，我们知道网页上的内容是一块一块分区域的，那么布局的目的自然是让这些块在合适的位置出现而且不干扰其他块内容的显示，让整个网页充满内容，其实就是排版。<br>一列和两列布局是网页设计中最常用的布局，掌握这两种布局可以解决大部分网页布局问题，但是既然是基本的布局，自然也有相对复杂的布局，这个另开一篇再做介绍。布局完成以后，接下来往这些块里添内容加样式，一个网页设计就完成了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -136,7 +136,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/05/09/CSS之基础布局/" data-title="CSS之基础布局 | 王健的自留地" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/05/13/CSS之基础布局/" data-title="CSS之基础布局 | 王健的自留地" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
